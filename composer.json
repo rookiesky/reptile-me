@@ -1,0 +1,22 @@
+{
+    "name": "rookie/reptile-me",
+    "authors": [
+        {
+            "name": "rookiesky",
+            "email": "1332305055@qq.com"
+        }
+    ],
+    "require": {
+        "jaeger/querylist": "^4.1",
+        "catfan/medoo": "^1.6"
+    },
+    "require-dev": {
+        "beyondcode/laravel-dump-server": "^1.0",
+        "filp/whoops": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    }
+}
