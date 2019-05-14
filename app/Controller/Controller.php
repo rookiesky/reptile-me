@@ -19,4 +19,17 @@ class Controller
         ],JSON_UNESCAPED_UNICODE);
         exit();
     }
+
+    /**
+     * 分页重组
+     * @param        $url
+     * @param        $replace
+     * @param string $tag
+     *
+     * @return mixed
+     */
+    protected function replaceUrl($url,$replace,$tag = '(*)')
+    {
+        return str_replace($tag,$replace,$url);
+    }
 }

@@ -60,6 +60,7 @@ class ComposerStaticInit1ffaef30cdbb76917063277221f671fa
         ),
         'M' => 
         array (
+            'Monolog\\' => 8,
             'Medoo\\' => 6,
         ),
         'L' => 
@@ -190,6 +191,10 @@ class ComposerStaticInit1ffaef30cdbb76917063277221f671fa
         'Psr\\Cache\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/cache/src',
+        ),
+        'Monolog\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
         ),
         'Medoo\\' => 
         array (

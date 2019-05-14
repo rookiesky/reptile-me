@@ -16,30 +16,122 @@ class Reptile
     public function boot($url)
     {
         $this->html = QueryList::get($url);
+        return $this;
     }
+
     /**
-     * 获取列表页链接
-     * @param $url
+     * 内容页链接
      * @param $rule
      *
-     * @return \App\Reptile\Array
+     * @return array|bool
      */
     public function listUrl($rule)
     {
-
-        return $this->html->rules($rule)->queryData();
+        $result = $this->html->rules(['link'=>explode('&&&',$rule)])->queryData();
+        if(isset($result[0]['link']) && $result[0]['link'] != ''){
+            return array_column($result,'link');
+        }
+        return false;
     }
 
     /**
-     * 采集分页数量
-     * @param $url
+     * 分页链接重组
+     * @param \App\Reptile\string $url  链接 如：http://baidu.com/page/(*)
+     * @param int|string                 $replace 需要替换的页码
+     * @param string              $tag 替换标识
+     *
+     * @return mixed
+     */
+    public function urlFormat(string $url, $replace = null)
+    {
+
+        if($replace == null){
+            return $url;
+        }
+        $rep_array = explode(',',$replace);
+
+        $new_url = $this->sortFormat($url,$rep_array[0]);
+
+        if(count($rep_array) == 2){
+            $new_url = $this->pageFormat($new_url,$rep_array[1]);
+        }
+        return $new_url;
+    }
+
+
+    public function sortFormat(string $url, $replace = null,$tag = '(*)')
+    {
+        return str_replace($tag,$replace,$url);
+    }
+
+    public function pageFormat(string $url, $replace = null,$tag = '(#)')
+    {
+        return str_replace($tag,$replace,$url);
+    }
+
+    /**
+     * 获取标题
      * @param $rule
      *
-     * @return \App\Reptile\Array
+     * @return mixed
      */
-    public function listPage($rule)
+    public function title($rule)
     {
-        return $this->listUrl($url,['total' => $rule]);
+
+        $result = $this->html->rules(['title'=>explode('&&&',$rule)])->queryData();
+
+        if(isset($result[0]['title']) && $result[0]['title'] != ''){
+            return $result[0]['title'];
+        }
+        return false;
+    }
+
+    /**
+     *
+     * @param $rule
+     *
+     * @return mixed
+     */
+    public function content($rule)
+    {
+        $result = $this->html->rules(['content'=>explode('&&&',$rule)])->queryData();
+
+        if(isset($result[0]['content']) && $result[0]['content'] != ''){
+            return $result[0]['content'];
+        }
+        return false;
+    }
+
+    /**
+     *
+     * @param $rule
+     *
+     * @return mixed
+     */
+    public function date($rule)
+    {
+        $result = $this->html->rules(['date'=>explode('&&&',$rule)])->queryData();
+
+        if(isset($result[0]['date']) && $result[0]['date'] != ''){
+            return $result[0]['date'];
+        }
+        return false;
+    }
+
+    /**
+     *
+     * @param $rule
+     *
+     * @return mixed
+     */
+    public function tag($rule)
+    {
+
+        $result = $this->html->rules(['tag'=>explode('&&&',$rule)])->queryData();
+        if(isset($result[0]['tag']) && $result[0]['tag'] != ''){
+            return array_column($result,'tag');
+        }
+        return false;
     }
 
 }

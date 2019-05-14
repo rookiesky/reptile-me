@@ -4,14 +4,11 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
     <title>云平台</title>
 </head>
 <body>
-
     <div class="container">
         <div class="card">
             <div class="card-header">
@@ -22,56 +19,77 @@
                     <div class="form-group row">
                         <label for="staticEmail" class="col-sm-2 col-form-label">名称</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" value="">
+                            <input type="text" class="form-control" name="title" value="">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="staticEmail" class="col-sm-2 col-form-label">数据库类型</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="staticEmail" value="mysql">
+                            <input type="text" class="form-control" name="mysql_type" id="staticEmail" value="mysql">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="staticEmail" class="col-sm-2 col-form-label">数据库端口</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="mysql_prot"  value="3306">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="inputPassword" class="col-sm-2 col-form-label">数据库地址</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" placeholder="" value="localhost">
+                            <input type="text" class="form-control" name="mysql_host" placeholder="" value="localhost">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="inputPassword" class="col-sm-2 col-form-label">数据库名称</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" placeholder="" value="">
+                            <input type="text" class="form-control" name="mysql_table" placeholder="" value="">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="inputPassword" class="col-sm-2 col-form-label">数据库用户名</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" placeholder="" value="">
+                            <input type="text" class="form-control" name="mysql_user" placeholder="" value="">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="inputPassword" class="col-sm-2 col-form-label">数据库密码</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control"  placeholder="" value="">
+                            <input type="text" class="form-control" name="mysql_password"  placeholder="" value="">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="inputPassword" class="col-sm-2 col-form-label">数据库前缀</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control"  placeholder="" value="">
+                            <input type="text" class="form-control" name="mysql_prot"  placeholder="" value="">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPassword" class="col-sm-2 col-form-label">入库站类型</label>
+                        <div class="col-sm-10">
+                            <select id="inputState" class="form-control" name="ruku_type">
+                                <option value="typecho" selected>typecho</option>
+                                <option value="wordpress">wordpress</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPassword" class="col-sm-2 col-form-label">入库分类ID</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="ruku_id"  placeholder="" value="">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="inputPassword" class="col-sm-2 col-form-label">采集地址</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="list-url"  placeholder="" value="">
-                            <small class="form-text text-muted">采集的入口</small>
+                            <input type="text" class="form-control" id="list-url" name="link"  placeholder="" value="">
+                            <small class="form-text text-muted">采集的入口,分页:(*), 分类：(#)</small>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="" class="col-sm-2 col-form-label">列表规则</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="list-rule"  placeholder="" value="">
+                            <input type="text" class="form-control" id="list-rule" name="list_rule"  placeholder="" value="">
                             <small class="form-text text-muted">采集具体内容页面链接,规则与采集对象以'&&&'链接</small>
                         </div>
                         <div class="col-sm-2">
@@ -81,21 +99,40 @@
                     <div class="form-group row">
                         <label for="inputPassword" class="col-sm-2 col-form-label">总页数</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" placeholder="" value="">
-                            <small class="form-text text-muted">列表的数量/可为空，当为空时自动采集分页</small>
+                            <input type="text" class="form-control" id="list-total-sort-rule" name="list_total" placeholder="" value="">
+                            <small class="form-text text-muted">列表的数量,规则'分页,分类'</small>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="inputPassword" class="col-sm-2 col-form-label">分页规则</label>
+                        <label for="inputPassword" class="col-sm-2 col-form-label">标题规则</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="list-page-rule" placeholder="" value="">
-                            <small class="form-text text-muted">可为空，当'总页数'为空时自动采用本规则采集分页数量</small>
+                            <input type="text" class="form-control" id="title-rule" name="content_title" placeholder="" value="">
                         </div>
-                        <div class="col-sm-2">
-                            <button type="button" class="btn btn-primary mb-2 put-test-page">测试</button>
+                        <button type="button" class="btn btn-primary mb-2 put-test-title">测试</button>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPassword" class="col-sm-2 col-form-label">内容规则</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="content-rule" name="content" placeholder="" value="">
                         </div>
+                        <button type="button" class="btn btn-primary mb-2 put-test-content">测试</button>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPassword" class="col-sm-2 col-form-label">时间规则</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="date-rule" name="content_date" placeholder="" value="">
+                        </div>
+                        <button type="button" class="btn btn-primary mb-2 put-test-date">测试</button>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPassword" class="col-sm-2 col-form-label">标签规则</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="tage-rule" name="content_tag" placeholder="" value="">
+                        </div>
+                        <button type="button" class="btn btn-primary mb-2 put-test-tage">测试</button>
                     </div>
 
+                    <button type="button" class="btn btn-info btn-block put-query">提交</button>
                 </form>
 
             </div>
@@ -133,16 +170,33 @@
 
     $(function () {
 
+       $(".put-query").click(function () {
+           var d = {};
+           var t = $('form').serializeArray();
+           $.each(t, function() {
+               d[this.name] = this.value;
+           });
+            $.post('/index.php?type=create',d)
+                .done(function (data) {
+                    alert('成功');
+                })
+                .fail(function (e) {
+                    alert('失败');
+                });
+       })
+
+
         $(".put-test-list").click(function () {
             let url = $("#list-url").val();
             let rule = $("#list-rule").val();
+            let page_rule = $('#list-total-sort-rule').val();
 
-            if(url == '' || rule == ''){
+            if(url == '' || rule == '' || page_rule == ''){
                 alert('链接或规则为空');
                 return false;
             }
 
-            $.post('/index.php?type=test-list',{url:url,rule:rule})
+            $.post('/index.php?type=test-list',{url:url,rule:rule,page:page_rule})
                 .done(function (data) {
                    let _html = '<ul>';
                     $.each(data.data,function (index,val) {
@@ -156,22 +210,90 @@
                 });
         });
 
-        $(".put-test-page").click(function () {
+        $(".put-test-title").click(function () {
             let url = $("#list-url").val();
-            let rule = $("#list-page-rule").val();
-            if(url == '' || rule == ''){
+            let rule = $("#list-rule").val();
+            let page_rule = $('#list-total-sort-rule').val();
+            let title_rule = $("#title-rule").val();
+
+            if(url == '' || rule == '' || title_rule == ''){
                 alert('链接或规则为空');
                 return false;
             }
 
-            $.post('/index.php?type=test-page',{url:url,rule:rule})
+            $.post('/index.php?type=test-title',{url:url,rule:rule,title:title_rule,page:page_rule})
                 .done(function (data) {
-                    console.log(data);
+                    $(".modal-body").html(data.data);
+                    $("#exampleModalCenter").modal('show');
                 })
                 .fail(function (e) {
                     alert(e.responseJSON);
                 });
 
+        });
+
+        $(".put-test-content").click(function () {
+            let url = $("#list-url").val();
+            let rule = $("#list-rule").val();
+            let content_rule = $("#content-rule").val();
+            let page_rule = $('#list-total-sort-rule').val();
+
+            if(url == '' || rule == '' || content_rule == ''){
+                alert('链接或规则为空');
+                return false;
+            }
+
+            $.post('/index.php?type=test-content',{url:url,rule:rule,content:content_rule,page:page_rule})
+                .done(function (data) {
+                    $(".modal-body").html(data.data);
+                    $("#exampleModalCenter").modal('show');
+                })
+                .fail(function (e) {
+                    alert(e.responseJSON);
+                });
+        });
+
+
+        $(".put-test-date").click(function () {
+            let url = $("#list-url").val();
+            let rule = $("#list-rule").val();
+            let date_rule = $("#date-rule").val();
+            let page_rule = $('#list-total-sort-rule').val();
+
+            if(url == '' || rule == '' || date_rule == ''){
+                alert('链接或规则为空');
+                return false;
+            }
+
+            $.post('/index.php?type=test-date',{url:url,rule:rule,date:date_rule,page:page_rule})
+                .done(function (data) {
+                    $(".modal-body").html(data.data);
+                    $("#exampleModalCenter").modal('show');
+                })
+                .fail(function (e) {
+                    alert(e.responseJSON);
+                });
+        });
+
+        $(".put-test-tage").click(function () {
+            let url = $("#list-url").val();
+            let rule = $("#list-rule").val();
+            let tage_rule = $("#tage-rule").val();
+            let page_rule = $('#list-total-sort-rule').val();
+
+            if(url == '' || rule == '' || tage_rule == ''){
+                alert('链接或规则为空');
+                return false;
+            }
+
+            $.post('/index.php?type=test-tag',{url:url,rule:rule,tage:tage_rule,page:page_rule})
+                .done(function (data) {
+                    $(".modal-body").html(data.data);
+                    $("#exampleModalCenter").modal('show');
+                })
+                .fail(function (e) {
+                    alert(e.responseJSON);
+                });
         });
 
 

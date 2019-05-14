@@ -1,5 +1,6 @@
 <?php
 include 'vendor/autoload.php';
+include 'config/function.php';
 
 define('DEBUG',true);
 define('BASE_PATH',str_replace('\\','/',realpath(dirname(__FILE__).'/'))."/");
@@ -12,8 +13,6 @@ if(DEBUG == true){
 
 $controller = new \App\Controller\HomeController();
 
-
-
 if(isset($_GET['type'])){
 
     switch ($_GET['type']){
@@ -23,8 +22,20 @@ if(isset($_GET['type'])){
         case 'test-list':
             $controller->testList();
             break;
-        case 'test-page':
-            $controller->testPage();
+        case 'test-title':
+            $controller->testTitle();
+            break;
+        case 'test-content':
+            $controller->testContent();
+            break;
+        case 'test-date':
+            $controller->testDate();
+            break;
+        case 'test-tag':
+            $controller->testTag();
+            break;
+        case 'create':
+            $controller->store();
             break;
     }
 
