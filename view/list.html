@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+</head>
+<body>
+
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header">
+            采集列表
+        </div>
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">名称</th>
+                    <th scope="col">链接</th>
+                    <th scope="col">入库类型</th>
+                    <th scope="col">入库ID</th>
+                    <th scope="col">页面数</th>
+                    <th scope="col">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php foreach($data as $item): ?>
+                <tr>
+                    <th scope="row"><?php echo $item['id'] ?></th>
+                    <td><?php echo $item['title'] ?></td>
+                    <td><?php echo $item['link'] ?></td>
+                    <td><?php echo $item['ruku_type'] ?></td>
+                    <td><?php echo $item['ruku_id'] ?></td>
+                    <td><?php echo $item['list_total'] ?></td>
+                    <td>
+                        <a href="/?type=edit&id=<?php echo $item['id'] ?>" target="_blank" class="btn btn-primary">编辑</a>
+                        <button type="button" data-id="<?php echo $item['id'] ?>" class="btn btn-danger">删除</button>
+                    </td>
+                </tr>
+                <?php endforeach ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<script>
+    $('.btn-danger').click(function () {
+        let id = $(this).data('id');
+        if(id == ''){
+            alert('id 不能为空');
+            return false;
+        }
+
+        $.post('/index.php?type=delete',{id:id})
+            .done(function (data) {
+                alert('删除成功');
+            })
+            .fail(function (e) {
+                alert(e.responseJSON);
+            });
+    });
+</script>
+
+</body>
+</html>

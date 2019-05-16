@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>云平台</title>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            采集设置
+        </div>
+        <div class="card-body">
+            <form>
+                <div class="form-group row">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">名称</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="title" value="<?php echo $data['title'] ?>">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">数据库类型</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="mysql_type" id="staticEmail" value="<?php echo $data['mysql_type'] ?>">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">数据库端口</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="mysql_prot"  value="<?php echo $data['mysql_prot'] ?>">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputPassword" class="col-sm-2 col-form-label">数据库地址</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="mysql_host" placeholder="" value="<?php echo $data['mysql_host'] ?>">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputPassword" class="col-sm-2 col-form-label">数据库名称</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="mysql_table" placeholder="" value="<?php echo $data['mysql_table'] ?>">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputPassword" class="col-sm-2 col-form-label">数据库用户名</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="mysql_user" placeholder="" value="<?php echo $data['mysql_user'] ?>">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputPassword" class="col-sm-2 col-form-label">数据库密码</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="mysql_password"  placeholder="" value="<?php echo $data['mysql_password'] ?>">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputPassword" class="col-sm-2 col-form-label">数据库前缀</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="mysql_prefix"  placeholder="" value="<?php echo $data['mysql_prefix'] ?>">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputPassword" class="col-sm-2 col-form-label">入库站类型</label>
+                    <div class="col-sm-10">
+                        <select id="inputState" class="form-control" name="ruku_type">
+                            <option value="typecho" <?php if($data['ruku_type'] == 'typecho'): ?> selected <?php endif?> >typecho</option>
+                            <option value="wordpress" <?php if($data['ruku_type'] == 'wordpress'): ?> selected <?php endif?>>wordpress</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputPassword" class="col-sm-2 col-form-label">入库分类ID</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="ruku_id"  placeholder="" value="<?php echo $data['ruku_id'] ?>">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputPassword" class="col-sm-2 col-form-label">采集地址</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="list-url" name="link"  placeholder="" value="<?php echo $data['link'] ?>">
+                        <small class="form-text text-muted">采集的入口,分页:(*), 分类：(#)</small>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="" class="col-sm-2 col-form-label">列表规则</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="list-rule" name="list_rule"  placeholder="" value="<?php echo $data['list_rule'] ?>">
+                        <small class="form-text text-muted">采集具体内容页面链接,规则与采集对象以'&&&'链接</small>
+                    </div>
+                    <div class="col-sm-2">
+                        <button type="button" class="btn btn-primary mb-2 put-test-list">测试</button>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputPassword" class="col-sm-2 col-form-label">总页数</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="list-total-sort-rule" name="list_total" placeholder="" value="<?php echo $data['list_total'] ?>">
+                        <small class="form-text text-muted">列表的数量,规则'分页,分类'</small>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputPassword" class="col-sm-2 col-form-label">标题规则</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="title-rule" name="content_title" placeholder="" value="<?php echo $data['content_title'] ?>">
+                    </div>
+                    <button type="button" class="btn btn-primary mb-2 put-test-title">测试</button>
+                </div>
+                <div class="form-group row">
+                    <label for="inputPassword" class="col-sm-2 col-form-label">内容规则</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="content-rule" name="content" placeholder="" value="<?php echo $data['content'] ?>">
+                    </div>
+                    <button type="button" class="btn btn-primary mb-2 put-test-content">测试</button>
+                </div>
+                <div class="form-group row">
+                    <label for="inputPassword" class="col-sm-2 col-form-label">时间规则</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="date-rule" name="content_date" placeholder="" value="<?php echo $data['content_date'] ?>">
+                    </div>
+                    <button type="button" class="btn btn-primary mb-2 put-test-date">测试</button>
+                </div>
+                <div class="form-group row">
+                    <label for="inputPassword" class="col-sm-2 col-form-label">标签规则</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="tage-rule" name="content_tag" placeholder="" value="<?php echo $data['content_tag'] ?>">
+                    </div>
+                    <button type="button" class="btn btn-primary mb-2 put-test-tage">测试</button>
+                </div>
+                <input type="hidden" name="id" value="<?php echo $data['id'] ?>">
+                <button type="button" class="btn btn-info btn-block put-query">提交</button>
+            </form>
+
+        </div>
+    </div>
+
+
+</div>
+
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">采集测试</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<script>
+
+    $(function () {
+
+        $(".put-query").click(function () {
+            var d = {};
+            var t = $('form').serializeArray();
+            $.each(t, function() {
+                d[this.name] = this.value;
+            });
+            $.post('/index.php?type=update',d)
+                .done(function (data) {
+                    alert('成功');
+                })
+                .fail(function (e) {
+                    alert('失败');
+                });
+        })
+
+
+        $(".put-test-list").click(function () {
+            let url = $("#list-url").val();
+            let rule = $("#list-rule").val();
+            let page_rule = $('#list-total-sort-rule').val();
+
+            if(url == '' || rule == '' || page_rule == ''){
+                alert('链接或规则为空');
+                return false;
+            }
+
+            $.post('/index.php?type=test-list',{url:url,rule:rule,page:page_rule})
+                .done(function (data) {
+                    let _html = '<ul>';
+                    $.each(data.data,function (index,val) {
+                        _html += '<li>' + val + '</li>';
+                    });
+                    $(".modal-body").html(_html + '</ul>');
+                    $("#exampleModalCenter").modal('show');
+                })
+                .fail(function (e) {
+                    alert(e.responseJSON);
+                });
+        });
+
+        $(".put-test-title").click(function () {
+            let url = $("#list-url").val();
+            let rule = $("#list-rule").val();
+            let page_rule = $('#list-total-sort-rule').val();
+            let title_rule = $("#title-rule").val();
+
+            if(url == '' || rule == '' || title_rule == ''){
+                alert('链接或规则为空');
+                return false;
+            }
+
+            $.post('/index.php?type=test-title',{url:url,rule:rule,title:title_rule,page:page_rule})
+                .done(function (data) {
+                    $(".modal-body").html(data.data);
+                    $("#exampleModalCenter").modal('show');
+                })
+                .fail(function (e) {
+                    alert(e.responseJSON);
+                });
+
+        });
+
+        $(".put-test-content").click(function () {
+            let url = $("#list-url").val();
+            let rule = $("#list-rule").val();
+            let content_rule = $("#content-rule").val();
+            let page_rule = $('#list-total-sort-rule').val();
+
+            if(url == '' || rule == '' || content_rule == ''){
+                alert('链接或规则为空');
+                return false;
+            }
+
+            $.post('/index.php?type=test-content',{url:url,rule:rule,content:content_rule,page:page_rule})
+                .done(function (data) {
+                    $(".modal-body").html(data.data);
+                    $("#exampleModalCenter").modal('show');
+                })
+                .fail(function (e) {
+                    alert(e.responseJSON);
+                });
+        });
+
+
+        $(".put-test-date").click(function () {
+            let url = $("#list-url").val();
+            let rule = $("#list-rule").val();
+            let date_rule = $("#date-rule").val();
+            let page_rule = $('#list-total-sort-rule').val();
+
+            if(url == '' || rule == '' || date_rule == ''){
+                alert('链接或规则为空');
+                return false;
+            }
+
+            $.post('/index.php?type=test-date',{url:url,rule:rule,date:date_rule,page:page_rule})
+                .done(function (data) {
+                    $(".modal-body").html(data.data);
+                    $("#exampleModalCenter").modal('show');
+                })
+                .fail(function (e) {
+                    alert(e.responseJSON);
+                });
+        });
+
+        $(".put-test-tage").click(function () {
+            let url = $("#list-url").val();
+            let rule = $("#list-rule").val();
+            let tage_rule = $("#tage-rule").val();
+            let page_rule = $('#list-total-sort-rule').val();
+
+            if(url == '' || rule == '' || tage_rule == ''){
+                alert('链接或规则为空');
+                return false;
+            }
+
+            $.post('/index.php?type=test-tag',{url:url,rule:rule,tage:tage_rule,page:page_rule})
+                .done(function (data) {
+                    $(".modal-body").html(data.data);
+                    $("#exampleModalCenter").modal('show');
+                })
+                .fail(function (e) {
+                    alert(e.responseJSON);
+                });
+        });
+
+
+
+    });
+
+</script>
+
+</body>
+</html>

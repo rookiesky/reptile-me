@@ -17,16 +17,94 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $content = new ReptileContent();
-        $content->start();
+        //$content = new ReptileContent();
+        //$content->start();
+       // $this->response(null,'error',404);
         include BASE_PATH . 'view/index.html';
     }
 
+    /**
+     * 列表视图
+     */
+    public function listView()
+    {
+        $data = Loc::boot()->select('web',['id','title','link','ruku_type','ruku_id','list_total']);
+        include BASE_PATH . '/view/list.html';
+    }
+
+    /**
+     * 编辑页面
+     */
+    public function show()
+    {
+        $id = isset($_GET['id']) ? $_GET['id'] : 0;
+        if(empty($id)){
+            return $this->response(null,'NOT PAGE',404);
+        }
+        $data = Loc::boot()->get('web','*',['id'=>$id]);
+        if(empty($data)){
+            return $this->response(null,'NOT PAGE',404);
+        }
+        include BASE_PATH . '/view/show.html';
+    }
+
+    /**
+     * 处理编辑逻辑
+     */
+    public function update()
+    {
+        $data = $_POST;
+        $mysql = Loc::boot();
+        $result = $mysql->get('web',['id'],['id'=>$data['id']]);
+
+        if(empty($result)){
+            return $this->response(null,'规则不存在',404);
+        }
+
+        try{
+            $mysql->update('web',$data,['id'=>$result['id']]);
+            return $this->response();
+
+        }catch (\Exception $exception){
+            return $this->response([$exception->getMessage()],'mysql update error',500);
+        }
+
+    }
+
+    public function destroy()
+    {
+        $id = isset($_POST['id']) ? $_POST['id'] : 0;
+        if(empty($id)){
+            return $this->response(null,'id empty',404);
+        }
+
+        $mysql = Loc::boot();
+
+        $result = $mysql->get('web','id',['id'=>$id]);
+
+        if(empty($result)){
+            return $this->response(null,'id empty',404);
+        }
+
+        if($mysql->delete('web',['id'=>$result])){
+            return $this->response();
+        }
+        return $this->response(null,'mysql delete error',500);
+
+    }
+
+
+    /**
+     * 创建视图
+     */
     public function create()
     {
         include BASE_PATH . 'view/create.html';
     }
 
+    /**
+     * 处理创建逻辑
+     */
     public function store()
     {
         $data = $_POST;

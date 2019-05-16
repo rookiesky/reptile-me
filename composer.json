@@ -9,7 +9,8 @@
     "require": {
         "jaeger/querylist": "^4.1",
         "monolog/monolog": "^1.24",
-        "catfan/medoo": "^1.6"
+        "catfan/medoo": "^1.6",
+        "sentry/sdk": "2.0.2"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
