@@ -8,17 +8,17 @@
 
 namespace App\Controller;
 
-use App\Active\ReptileList;
+use App\Active\ReptileContent;
 use App\Models\Loc;
 use App\Reptile\Reptile;
-use App\Tools\Log;
+
 
 class HomeController extends Controller
 {
     public function index()
     {
-        $active = new ReptileList();
-        $active->boot();
+        $content = new ReptileContent();
+        $content->start();
         include BASE_PATH . 'view/index.html';
     }
 

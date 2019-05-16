@@ -13,7 +13,7 @@ class Loc
 {
     public static function boot()
     {
-        $data = include BASE_PATH . 'config.inc.php';
-        return new Medoo($data);
+        $config = include_once (BASE_PATH . 'config.inc.php');
+        return new Medoo($config);
     }
 }

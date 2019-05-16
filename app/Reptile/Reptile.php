@@ -2,6 +2,7 @@
 
 namespace App\Reptile;
 
+use App\Tools\Log;
 use QL\QueryList;
 
 /**
@@ -15,7 +16,13 @@ class Reptile
 
     public function boot($url)
     {
-        $this->html = QueryList::get($url);
+        try{
+            $this->html = QueryList::get($url);
+        }catch (\Exception $exception){
+            Log::boot()->error('reptile HTML error' . $url,[$exception->getMessage()]);
+            return false;
+        }
+
         return $this;
     }
 
@@ -27,10 +34,13 @@ class Reptile
      */
     public function listUrl($rule)
     {
+
         $result = $this->html->rules(['link'=>explode('&&&',$rule)])->queryData();
         if(isset($result[0]['link']) && $result[0]['link'] != ''){
+
             return array_column($result,'link');
         }
+
         return false;
     }
 
@@ -50,21 +60,21 @@ class Reptile
         }
         $rep_array = explode(',',$replace);
 
-        $new_url = $this->sortFormat($url,$rep_array[0]);
+        $new_url = $this->pageFormat($url,$rep_array[0]);
 
         if(count($rep_array) == 2){
-            $new_url = $this->pageFormat($new_url,$rep_array[1]);
+            $new_url = $this->sortFormat($new_url,$rep_array[1]);
         }
         return $new_url;
     }
 
 
-    public function sortFormat(string $url, $replace = null,$tag = '(*)')
+    public function pageFormat(string $url, $replace = null,$tag = '(*)')
     {
         return str_replace($tag,$replace,$url);
     }
 
-    public function pageFormat(string $url, $replace = null,$tag = '(#)')
+    public function sortFormat(string $url, $replace = null,$tag = '(#)')
     {
         return str_replace($tag,$replace,$url);
     }
