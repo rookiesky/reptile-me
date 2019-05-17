@@ -34,6 +34,11 @@ class ReptileContent
             'status' => 0,
             'LIMIT' => 2
         ]);
+
+        if(empty($links)){
+            return false;
+        }
+
         $this->mysql->update('links',['status'=>1],[
             'id' => array_column($links,'id')
         ]);
