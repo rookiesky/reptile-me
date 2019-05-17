@@ -9,7 +9,7 @@ namespace App\Tools;
  */
 class Cache
 {
-    protected $file = BASE_PATH . 'store/cache.php';
+    protected $file = BASE_PATH . 'store/cache/cache.php';
 
     /**
      * 写入缓存
