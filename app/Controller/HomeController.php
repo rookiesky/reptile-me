@@ -8,9 +8,9 @@
 
 namespace App\Controller;
 
-use App\Active\ReptileContent;
 use App\Models\Loc;
 use App\Reptile\Reptile;
+use App\Tools\Cache;
 
 
 class HomeController extends Controller
@@ -63,6 +63,7 @@ class HomeController extends Controller
 
         try{
             $mysql->update('web',$data,['id'=>$result['id']]);
+            (new Cache())->put('web_links_' . $result['id'],$data);
             return $this->response();
 
         }catch (\Exception $exception){
@@ -87,6 +88,7 @@ class HomeController extends Controller
         }
 
         if($mysql->delete('web',['id'=>$result])){
+            (new Cache())->forget('web_links_' . $result);
             return $this->response();
         }
         return $this->response(null,'mysql delete error',500);
