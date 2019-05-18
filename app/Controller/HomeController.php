@@ -29,7 +29,7 @@ class HomeController extends Controller
      */
     public function listView()
     {
-        $data = Loc::boot()->select('web',['id','title','link','ruku_type','ruku_id','list_total']);
+        $data = Loc::boot()->select('web',['id','title','link','ruku_type','ruku_id','list_total','status']);
         include BASE_PATH . '/view/list.html';
     }
 
@@ -47,6 +47,21 @@ class HomeController extends Controller
             return $this->response(null,'NOT PAGE',404);
         }
         include BASE_PATH . '/view/show.html';
+    }
+
+    public function copay()
+    {
+        $id = isset($_GET['id']) ? $_GET['id'] : 0;
+        if(empty($id)){
+            return $this->response(null,'NOT PAGE',404);
+        }
+
+        $data = Loc::boot()->get('web','*',['id'=>$id]);
+        if(empty($data)){
+            return $this->response(null,'NOT PAGE',404);
+        }
+
+        include BASE_PATH . '/view/copay.html';
     }
 
     /**

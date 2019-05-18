@@ -23,6 +23,7 @@
                 <tr>
                     <th scope="col">ID</th>
                     <th scope="col">名称</th>
+                    <th scope="col">状态</th>
                     <th scope="col">链接</th>
                     <th scope="col">入库类型</th>
                     <th scope="col">入库ID</th>
@@ -35,6 +36,7 @@
                 <tr>
                     <th scope="row"><?php echo $item['id'] ?></th>
                     <td><?php echo $item['title'] ?></td>
+                    <td><?php echo $item['status'] ?></td>
                     <td><?php echo $item['link'] ?></td>
                     <td><?php echo $item['ruku_type'] ?></td>
                     <td><?php echo $item['ruku_id'] ?></td>
@@ -42,6 +44,7 @@
                     <td>
                         <a href="/?type=edit&id=<?php echo $item['id'] ?>" target="_blank" class="btn btn-primary">编辑</a>
                         <button type="button" data-id="<?php echo $item['id'] ?>" class="btn btn-danger">删除</button>
+                        <a href="/?type=copay&id=<?php echo $item['id'] ?>" target="_blank" class="btn btn-success">复制</a>
                     </td>
                 </tr>
                 <?php endforeach ?>
