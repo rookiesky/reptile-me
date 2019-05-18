@@ -32,7 +32,7 @@ class ReptileContent
     {
         $links = $this->mysql->select('links','*',[
             'status' => 0,
-            'LIMIT' => 2
+            'LIMIT' => 6
         ]);
 
         if(empty($links)){

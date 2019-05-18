@@ -2,6 +2,9 @@
 
 namespace App\Article;
 
+use function Clue\StreamFilter\fun;
+use QL\QueryList;
+
 /**
  * Class TypechoArticle
  *
@@ -17,6 +20,7 @@ class TypechoArticle extends Article implements ArticleInterface
     {
         //增加文章
         $time  = empty($article['date']) ? time() : strtotime($article['date']);
+
         $data = [
            'title' => $article['title'],
            'slug' => $article['title'],
