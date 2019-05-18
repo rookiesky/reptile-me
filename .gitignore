@@ -1,4 +1,4 @@
 /.idea
 /vendor
 /store/log/*.log
-/store/*.php
+/store/cache/*.php
