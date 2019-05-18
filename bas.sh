@@ -1,15 +1,10 @@
 #!/bin/bash
 
-php content.php 1 > /dev/null 2>&1 &
+for ((i=0;i<6;i++))
+do
+    php content.php > /dev/null 2>&1 &
+    sleep 9
+done
 
-sleep 1;
 
-php content.php 2 > /dev/null 2>&1 &
-
-sleep 1;
-
-php content.php 3 > /dev/null 2>&1 &
-
-sleep 1;
-
-php content.php 4 > /dev/null 2>&1 &
+exit
