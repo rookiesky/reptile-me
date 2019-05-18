@@ -31,8 +31,8 @@ class TypechoArticle extends Article implements ArticleInterface
         $this->mysql = $mysql = self::mysql($web);
 
         $mysql->insert('contents',$data);
-        $this->cid = $cid = $mysql->id();
 
+        $this->cid = $cid = $mysql->id();
 
         $this->addSort($article['tag'],$web['ruku_id']);
 
@@ -95,6 +95,7 @@ class TypechoArticle extends Article implements ArticleInterface
     protected function addSort($tag,$ruku_id)
     {
        $sort =  $this->sort($ruku_id,$tag);
+
        if($sort == false){
            $sort = 1;
        }

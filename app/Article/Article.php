@@ -38,6 +38,10 @@ class Article
     protected function sort($ruku_id,$tag)
     {
         $ruku_id_array = explode(',',$ruku_id);
+
+        if(count($ruku_id_array) == 1){
+            return $ruku_id_array[0];
+        }
         if(is_string($tag)){
             return array_search($tag,$ruku_id_array);
         }

@@ -8,6 +8,7 @@
 
 namespace App\Controller;
 
+use App\Active\ReptileContent;
 use App\Models\Loc;
 use App\Reptile\Reptile;
 use App\Tools\Cache;
