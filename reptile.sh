@@ -1,8 +1,8 @@
 #!/bin/bash
 
-dirpath=`pwd`
+file_path=/home/wwwroot/reptile
 
-cd $dirpath
+cd $file_path
 
 for ((i=0;i<6;i++))
 do
